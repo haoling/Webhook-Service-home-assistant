@@ -13,6 +13,16 @@ basic_webhook:
     jsonObj:
       name: Json Data
       description: Json Object To Send
+    username:
+      name: Username
+      description: Username
+      selector:
+        text:
+    password:
+      name: Password
+      description: Password
+      selector:
+        text:
 discord_webhook:
   description: Service Provider to use Discord Webhooks
   fields:

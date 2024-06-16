@@ -19,7 +19,11 @@ def setup(hass, config):
             jsondata = data["jsonObj"]
         else:
             jsondata = {}
-        result = requests.post(data["webhook"], json = jsondata)
+        # BASIC authenticate
+        auth = None
+        if "username" in data and "password" in data:
+            auth = (data["username"], data["password"])
+        result = requests.post(data["webhook"], json = jsondata, auth = auth)
         _LOGGER.warn('Received data', data["webhook"])
 
     hass.services.register(DOMAIN, SERVICE_SEND, send_basic_webhook)
